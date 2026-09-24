@@ -1,0 +1,220 @@
+:root {
+  --bg-color: #2b2622;
+  --bg-dot: #3a332d;
+  --text-dark: #222220;
+  --text-muted: #3b3936;
+  --header-subtext: #d1c7bd;
+  --btn-bg: #1e1e1e;
+  --btn-hover: #333333;
+  --pin-color: #e63946;
+  --note-shadow: rgba(0, 0, 0, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  padding: 2.5rem 1rem;
+  color: #ffffff;
+
+  /* Corkboard texture pattern */
+  background-color: var(--bg-color);
+  background-image:
+    radial-gradient(var(--bg-dot) 15%, transparent 16%),
+    radial-gradient(var(--bg-dot) 15%, transparent 16%);
+  background-size: 24px 24px;
+  background-position:
+    0 0,
+    12px 12px;
+}
+
+/* Header */
+.site-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.site-title {
+  font-family: "Caveat", cursive;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.site-subtitle {
+  font-size: 0.95rem;
+  color: var(--header-subtext);
+  margin-top: 0.25rem;
+}
+
+/* Board layout */
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+/* Base Post-it Note */
+.post-it {
+  position: relative;
+  width: 320px;
+  padding: 1.75rem 1.5rem 1.5rem;
+  color: var(--text-dark);
+  box-shadow:
+    5px 10px 20px var(--note-shadow),
+    0 2px 4px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.25s ease;
+  border-bottom-right-radius: 40px 8px; /* subtle bent corner effect */
+}
+
+.post-it:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow:
+    8px 16px 28px rgba(0, 0, 0, 0.35),
+    0 4px 6px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Push Pin */
+.pin {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 18px;
+  background: var(--pin-color);
+  border-radius: 50%;
+  box-shadow:
+    inset -2px -2px 4px rgba(0, 0, 0, 0.4),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.6),
+    0 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+.pin::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  top: 3px;
+  left: 4px;
+}
+
+/* Post-it Content */
+.game-title {
+  font-family: "Caveat", cursive;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 0.85rem;
+}
+
+.screenshot-frame {
+  width: 100%;
+  height: 170px;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screenshot-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+}
+
+/* Tech Stack Badges */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.2rem 0.45rem;
+  border-radius: 3px;
+  letter-spacing: 0.3px;
+  color: #333333;
+}
+
+/* Action Button */
+.play-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: var(--btn-bg);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.65rem 1rem;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.play-btn:hover {
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+}
+
+.play-btn:active {
+  transform: translateY(1px);
+}
+
+.color-yellow {
+  background-color: #fff89a;
+}
+.color-cyan {
+  background-color: #bbf2f6;
+}
+.color-pink {
+  background-color: #ffd1dc;
+}
+.color-green {
+  background-color: #c8f7c5;
+}
+
+.tilt-left {
+  transform: rotate(-2deg);
+}
+.tilt-right {
+  transform: rotate(2.5deg);
+}
+.tilt-mild {
+  transform: rotate(1deg);
+}
